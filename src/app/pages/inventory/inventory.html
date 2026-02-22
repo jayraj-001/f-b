@@ -1,0 +1,50 @@
+<div class="row mx-3">
+    <h2>Inventory</h2>
+</div>
+<form (ngSubmit)="onSubmit()">
+    <div class="row mx-5 ">
+        <div class="col">
+            <label for="productId">Product ID</label>
+            <input type="text" name="productId"  [(ngModel)]="inventoryData.productId" class="form-control" placeholder="productId">
+        </div>
+        <div class="col">
+            <label for="productName">Product Name</label>
+            <input type="text"  name="productName" [(ngModel)]="inventoryData.productName" class="form-control" placeholder="Product Name">
+        </div>
+        <div class="col">
+            <label for="stockAvailable">Stock Available</label>
+            <input type="text" name="stockAvailable"  [(ngModel)]="inventoryData.stockAvailable" class="form-control" placeholder="Stock Available">
+        </div>
+        <div class="col">
+            <label for="reoderStock">Rendor Stock</label>
+            <input type="text"  name="reorderStock"  [(ngModel)]="inventoryData.reorderStock" class="form-control" placeholder="Rendor Stock ">
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<div class="mx-3 mt-5"><h3>Inventory Details</h3></div>
+<table class="table table-hover mx-3">
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Stock Available</th>
+        <th>ReOrder Stock</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inventory of inventoryDto;let i = index">
+        <td>{{inventory.productId}}</td>
+        <td>{{inventory.productName}}</td>
+        <td>{{inventory.stockAvailable}}</td>
+        <td>{{inventory.reorderStock}}</td>
+        <td><button class="btn btn-success ">Edit</button> &nbsp;
+        <button class="btn btn-danger" (click)="onDelete(inventory.productId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
